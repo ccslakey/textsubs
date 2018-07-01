@@ -12,19 +12,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-            return render(request, 'users/login.html', {user: user})
+            return render(request, 'users/index.html')
     else:
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
-
-
-def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)
-            return render(request, 'users/index.html', {user: user})
-    else:
-        form = LoginForm()
-    return render(request, 'users/login.html', {'form': form})

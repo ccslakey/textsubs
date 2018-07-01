@@ -1,10 +1,16 @@
-<a href={% url 'login' %} class="btn btn-outline-secondary">Log in</a>
-<br><br>
-<a href={% url 'signup' %} class="btn btn-outline-secondary">Sign Up</a>
 
 
-{% if user %}
+{% if user.is_authenticated %}
 
-<p>Hello {{ user.phone_number }}!</p>
+  <p>Hello {{ user.phone_number }}!</p>
+  <a href="#">My account</a>
+  <a href="#">Change password</a>
+  <a href="{% url 'logout' %}">Log out</a>
+
+{% else %}
+  <a href={% url 'login' %} class="btn btn-outline-secondary">Log in</a>
+  <br>
+    <p>or</p>
+  <a href={% url 'signup' %} class="btn btn-outline-secondary">Sign Up</a>
 
 {% endif %}
