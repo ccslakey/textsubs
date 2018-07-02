@@ -47,4 +47,4 @@ class User(AbstractUser):
     email = models.EmailField(_('email address'), max_length = 255, blank=True)
 
     USERNAME_FIELD = 'phone_number'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email']
